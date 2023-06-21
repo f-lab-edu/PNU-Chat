@@ -1,5 +1,9 @@
 'use client';
 
+import Header from '@/components/Header';
+import MyChatBox from '@/components/chat/MyChatBox';
+import OtherChatBox from '@/components/chat/OtherChatBox';
+import SendMessage from '@/components/chat/SendMessage';
 import { IMessage } from '@/lib/models/Message';
 import { IUser } from '@/lib/models/User';
 import { useState, useEffect } from 'react';
@@ -34,51 +38,18 @@ export default function Chat({ params }: { params: { chatRoom: string } }) {
     };
   }, [params.chatRoom]);
 
-  const socketHandler = () => {
-    socket.emit('sendMessage', text, params.chatRoom);
-    setText('');
-  };
   return (
     <>
-      <h1>Chat page</h1>
-      {messages.map((message) => {
-        // 상대방 메시지
-        if (audience && message.from.toString() === audience._id.toString()) {
-          return (
-            <div key={message._id.toString()}>
-              <span>
-                상대:{audience.nickname}/{audience.age}/{audience.gender}/{audience.major}
-              </span>
-              <br />
-              <span>
-                {message.content}:{message.createdAt}
-              </span>
-            </div>
-          );
-        }
-        return (
-          <div key={message._id.toString()}>
-            <span>내꺼</span>
-            <br />
-            <span>
-              {message.content}:{message.createdAt}
-            </span>
-          </div>
-        );
-      })}
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onKeyPress={(e) => {
-          if (e.key === 'Enter') {
-            socketHandler();
+      <Header title={audience?.nickname as string} />
+      <ul className="list-none bg-blue-200 py-1">
+        {messages.map((message) => {
+          if (audience && message.from.toString() === audience._id.toString()) {
+            return <OtherChatBox key={message._id.toString()} audience={audience} message={message} />;
           }
-        }}
-      />
-      <button type="button" onClick={() => socketHandler()}>
-        버튼
-      </button>
+          return <MyChatBox key={message._id.toString()} message={message} />;
+        })}
+      </ul>
+      <SendMessage socket={socket} text={text} setText={setText} />
     </>
   );
 }

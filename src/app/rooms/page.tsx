@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { IRoomList } from '@/types/room';
 import Link from 'next/link';
-import Room from '@/components/Room';
+import Room from '@/components/rooms/Room';
 
 async function getRoomList() {
   const res = await fetch('/api/roomList');
