@@ -1,4 +1,4 @@
-import Navbar from './components/Navbar';
+import './globals.css';
 
 export const metadata = {
   title: 'PNU-CHAT',
@@ -8,10 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko-KR">
-      <body>
-        {children}
-        <Navbar />
-      </body>
+      <body className="p-4 max-w-3xl m-auto">{children}</body>
     </html>
   );
 }
