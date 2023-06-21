@@ -1,18 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { IChatRoom } from '@/lib/models/ChatRoom';
+import { IRoomList } from '@/types/room';
 import Link from 'next/link';
+import Room from '@/components/Room';
 
 async function getRoomList() {
   const res = await fetch('/api/roomList');
   return res.json();
 }
 
-interface IRoomList {
-  roomObject: IChatRoom;
-  receiver: { age: number; nickname: string; gender: string; major: string };
-}
 export default function RoomList() {
   const [roomList, setRoomList] = useState<IRoomList[]>([]);
   useEffect(() => {
@@ -24,15 +21,11 @@ export default function RoomList() {
 
   return (
     <div>
-      this is roomList page
       {roomList.map(({ roomObject, receiver }) => {
         if (roomList.length) {
           return (
             <Link href={`chat/${roomObject._id.toString()}`} key={roomObject.toString()}>
-              <div>
-                {receiver.nickname}/{receiver.gender}/{receiver.age}/{receiver.major}
-              </div>
-              <div>{roomObject.lastMessage}</div>
+              <Room room={roomObject} receiver={receiver} />
             </Link>
           );
         }

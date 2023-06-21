@@ -15,7 +15,10 @@ export async function GET(req: NextRequest) {
           roomObject?.from.toString() === userId
             ? await User.findOne<IUser>({ _id: roomObject.to })
             : await User.findOne<IUser>({ _id: roomObject?.from });
-        return { roomObject, receiver: { age: receiver?.age, nickname: receiver?.nickname, gender: receiver?.gender, major: receiver?.major } };
+        return {
+          roomObject,
+          receiver: { _id: receiver?._id, age: receiver?.age, nickname: receiver?.nickname, gender: receiver?.gender, major: receiver?.major },
+        };
       }) as Iterable<IChatRoom>
     );
     return NextResponse.json(roomDetails, { status: 200 });
