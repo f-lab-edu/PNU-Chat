@@ -39,9 +39,9 @@ export default function Chat({ params }: { params: { chatRoom: string } }) {
   }, [params.chatRoom]);
 
   return (
-    <>
+    <div className="min-h-[90vh] bg-blue-200 relative">
       <Header title={audience?.nickname as string} />
-      <ul className="list-none bg-blue-200 py-1">
+      <ul className="list-none ">
         {messages.map((message) => {
           if (audience && message.from.toString() === audience._id.toString()) {
             return <OtherChatBox key={message._id.toString()} audience={audience} message={message} />;
@@ -50,6 +50,6 @@ export default function Chat({ params }: { params: { chatRoom: string } }) {
         })}
       </ul>
       <SendMessage socket={socket} text={text} setText={setText} />
-    </>
+    </div>
   );
 }

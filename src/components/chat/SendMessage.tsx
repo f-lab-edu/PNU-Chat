@@ -7,7 +7,7 @@ function SendMessage({ socket, text, setText }: { socket: Socket; text: string; 
     setText('');
   };
   return (
-    <div className="flex border-b-2 border-b-gray-100">
+    <div className="absolute bottom-0 w-[100%] flex border-b-2 border-b-gray-100">
       <input
         className="pl-5 flex-1 focus:outline-none"
         type="text"
