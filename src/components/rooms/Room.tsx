@@ -1,6 +1,7 @@
 import { IChatRoom } from '@/lib/models/ChatRoom';
 import { IAboutReceiver } from '@/types/room';
 import React from 'react';
+import UnreadIcon from './UnreadIcon';
 
 function Room({ room, receiver }: { room: IChatRoom; receiver: IAboutReceiver }) {
   return (
@@ -11,11 +12,9 @@ function Room({ room, receiver }: { room: IChatRoom; receiver: IAboutReceiver })
         <span className="blueTag">{receiver.age}세</span>
         <span className="greenTag">{receiver.major}</span>
       </div>
-      <div className="flex h-[50px]">
-        <div className="overflow-ellipsis flex-1">{room.lastMessage}</div>
-        <span className="rounded-full bg-red-400 p-1 w-[30px] h-[30px] text-center text-white">
-          {room.from.toString() === receiver._id.toString() ? room.unreadTo : room.unreadFrom}
-        </span>
+      <div className="flex h-[50px] items-center">
+        <div className="overflow-ellipsis overflow-hidden whitespace-nowrap flex-1">{room.lastMessage}</div>
+        <UnreadIcon room={room} receiver={receiver} />
       </div>
     </div>
   );
