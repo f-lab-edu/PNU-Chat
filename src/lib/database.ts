@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-// Connection URL
 
 const dbConnection = async () => {
   try {

@@ -41,7 +41,31 @@ async function submitForm(data: FormData) {
   redirect('auth/authenticated');
 }
 
-export default async function Auth() {
+const majorList = [
+  '인문대학',
+  '사회과학대학',
+  '자연과학대학',
+  '공과대학',
+  '법과대학',
+  '사범대학',
+  '상과대학',
+  '약학대학',
+  '의과대학',
+  '치과대학',
+  '예술대학',
+  '생활환격대학',
+  '스포츠과학부',
+  '관광컨벤션학부',
+  '나노과학기술대학',
+  '생명자원과학대학',
+  '간호대학',
+  '생활과학대학',
+  '경제통상대학',
+  '이공대학',
+  '사회문화대학',
+  '정보의생명공학대학',
+];
+export default async function AuthSignUp() {
   return (
     <form action={submitForm} method="POST" className="pt-[50px] px-4">
       <label htmlFor="email" className="h-5">
@@ -81,28 +105,11 @@ export default async function Auth() {
       <label htmlFor="major">
         <span className="inputTitle">소속대학</span>
         <select name="major" id="major" className="authInput">
-          <option value="인문대학">인문대학</option>
-          <option value="사회과학대학">사회과학대학</option>
-          <option value="자연과학대학">자연과학대학</option>
-          <option value="공과대학">공과대학</option>
-          <option value="법과대학">법과대학</option>
-          <option value="사범대학">사범대학</option>
-          <option value="상과대학">상과대학</option>
-          <option value="약학대학">약학대학</option>
-          <option value="의과대학">의과대학</option>
-          <option value="치과대학">치과대학</option>
-          <option value="예술대학">예술대학</option>
-          <option value="생활환경대학">생활환경대학</option>
-          <option value="스포츠과학부">스포츠과학부</option>
-          <option value="관광컨벤션학부">관광컨벤션학부</option>
-          <option value="나노과학기술대학">나노과학기술대학</option>
-          <option value="생명자원과학대학">생명자원과학대학</option>
-          <option value="간호대학">간호대학</option>
-          <option value="생활과학대학">생활과학대학</option>
-          <option value="경제통상대학">경제통상대학</option>
-          <option value="이공대학">이공대학</option>
-          <option value="사회문화대학">사회문화대학</option>
-          <option value="정보의생명공학대학">정보의생명공학대학</option>
+          {majorList.map((major) => (
+            <option key={major} value={major}>
+              {major}
+            </option>
+          ))}
         </select>
       </label>
       <br />

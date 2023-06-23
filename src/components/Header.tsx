@@ -10,12 +10,12 @@ export default function Header({ title }: { title: string }) {
       <Image
         alt="backIcon"
         src="/backIcon.svg"
-        width={16}
-        height={16}
+        width={20}
+        height={20}
         className="absolute inline left-4 cursor-pointer"
         onClick={() => router.back()}
       />
-      <h1 className="inline font-bold">{title}</h1>
+      <h1 className="inline font-bold ">{title}</h1>
     </div>
   );
 }
