@@ -18,6 +18,5 @@ const chatRoomSchema = new mongoose.Schema<IChatRoom>({
   unreadTo: { type: Number, default: 0 },
   lastMessage: String,
 });
-
-const ChatRoom = mongoose.models.ChatRoom || mongoose.model<IChatRoom>('ChatRoom', chatRoomSchema);
+const ChatRoom = mongoose.models?.ChatRoom || mongoose.model<IChatRoom>('ChatRoom', chatRoomSchema);
 export default ChatRoom;

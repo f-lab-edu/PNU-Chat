@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .authInput {
+    @apply bg-gray-100 rounded p-2;
+  }
+  .authBtn {
+    @apply bg-blue-400 rounded text-white mx-auto my-3 w-[100%] p-3;
+  }
+  .inputTitle {
+    @apply block my-2 font-medium;
+  }
+  .contentCenter {
+    @apply flex flex-col justify-center items-center h-[80vh] text-xl text-center;
+  }
+  .yellowTag {
+    @apply bg-yellow-200 rounded text-yellow-600 px-2 py-0.5 mr-1;
+  }
+  .blueTag {
+    @apply bg-blue-200 rounded text-blue-600 px-2 py-0.5 mr-1;
+  }
+  .greenTag {
+    @apply bg-green-200 rounded text-green-600 px-2 py-0.5 mr-1;
+  }
+}

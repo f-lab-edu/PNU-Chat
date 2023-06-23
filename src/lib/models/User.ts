@@ -24,5 +24,6 @@ const userSchema = new mongoose.Schema<IUser>({
   chatRooms: { type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ChatRoom' }], default: [] },
 });
 
-const User = mongoose.models.USER || mongoose.model('USER', userSchema);
+const User = mongoose.models?.User || mongoose.model('User', userSchema);
+
 export default User;

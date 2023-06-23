@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  compiler: {
-    styledComponents: true,
-  },
+  compiler: {},
   experimental: {
     instrumentationHook: true,
     serverActions: true,
