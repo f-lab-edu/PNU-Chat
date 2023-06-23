@@ -14,7 +14,7 @@ export default function Navbar() {
   const pathName = usePathname();
 
   return (
-    <div className="fixed bottom-0 w-[100%] max-w-3xl h-[10%] bg-white bottom-0 list-none flex justify-around items-center">
+    <div className="fixed bottom-0 w-[100%] max-w-3xl bg-white bottom-0 list-none flex justify-around items-center p-2">
       {navData.map((data) => (
         <Link href={data.path}>
           <div

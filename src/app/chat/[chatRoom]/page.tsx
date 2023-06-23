@@ -39,7 +39,7 @@ export default function Chat({ params }: { params: { chatRoom: string } }) {
   }, [params.chatRoom]);
 
   return (
-    <div className="min-h-[90vh] bg-blue-200 relative">
+    <div className="min-h-[100vh] bg-blue-200 relative pt-[50px] pb-[110px]">
       <Header title={audience?.nickname as string} />
       <ul className="list-none ">
         {messages.map((message) => {

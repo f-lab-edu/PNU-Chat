@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 export default function Header({ title }: { title: string }) {
   const router = useRouter();
   return (
-    <div className="sticky top-0 p-2 bg-white text-center">
+    <div className="fixed box-content h-6 w-[100%] max-w-3xl top-0 p-2 bg-white text-center">
       <Image
         alt="backIcon"
         src="/backIcon.svg"
