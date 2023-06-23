@@ -43,7 +43,7 @@ async function submitForm(data: FormData) {
 
 export default async function Auth() {
   return (
-    <form action={submitForm} method="POST">
+    <form action={submitForm} method="POST" className="pt-[50px] px-4">
       <label htmlFor="email" className="h-5">
         <span className="inputTitle">아이디</span>
         <input
@@ -119,7 +119,7 @@ export default async function Auth() {
         </select>
       </label>
       <br />
-      <button className="authBtn" type="submit">
+      <button className="authBtn " type="submit">
         완료하기
       </button>
     </form>
