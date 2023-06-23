@@ -109,6 +109,11 @@ export default function handler(req: NextApiRequest, res: NextResponseServerIO) 
       const messageLists = await Promise.all(
         socket.data.room?.messages.map((message) => Message.findOne({ _id: message._id })) as Iterable<IMessage>
       );
+      if (socket.data.room?.from.toString() === socket.data.sender?._id.toString()) {
+        await ChatRoom.updateOne({ _id: socket.data.room._id }, { unreadFrom: 0 });
+      } else {
+        await ChatRoom.updateOne({ _id: socket.data.room._id }, { unreadTo: 0 });
+      }
       io.to(socket.data.room._id.toString()).emit('roomJoined', { messageLists, audience: socket.data.receiver });
 
       socket.on('sendMessage', async (message: string) => {
