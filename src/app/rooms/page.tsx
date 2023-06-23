@@ -20,7 +20,7 @@ export default function RoomList() {
   }, []);
 
   return (
-    <div>
+    <div className="py-[50px]">
       {roomList.map(({ roomObject, receiver }) => {
         if (roomList.length) {
           return (
