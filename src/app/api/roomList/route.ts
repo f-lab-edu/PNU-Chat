@@ -1,18 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import User, { IUser } from '@/lib/models/User';
 import ChatRoom, { IChatRoom } from '@/lib/models/ChatRoom';
-import * as jose from 'jose';
+import getUser from '@/utils/getUser';
 
 export async function GET(req: NextRequest) {
   try {
-    const token = req.cookies.get('token')?.value;
-    const userId = (await (await jose.jwtVerify(token as string, new TextEncoder().encode(process.env.JWT_SECRET))).payload.id) as string;
-    const user = await User.findOne<IUser>({ _id: userId });
+    const user = await getUser(req);
     const roomDetails = await Promise.all(
       user?.chatRooms.map(async (room) => {
         const roomObject = await ChatRoom.findOne<IChatRoom>({ _id: room });
         const receiver =
-          roomObject?.from.toString() === userId
+          roomObject?.from.toString() === user._id.toString()
             ? await User.findOne<IUser>({ _id: roomObject.to })
             : await User.findOne<IUser>({ _id: roomObject?.from });
         return {

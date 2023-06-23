@@ -15,7 +15,7 @@ export default function Header({ title }: { title: string }) {
         className="absolute inline left-4 cursor-pointer"
         onClick={() => router.back()}
       />
-      <h1 className="inline font-bold ">{title}</h1>
+      <h1 className="inline font-bold">{title}</h1>
     </div>
   );
 }

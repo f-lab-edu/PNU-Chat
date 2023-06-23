@@ -19,7 +19,7 @@ function SendMessage({ socket, text, setText }: { socket: Socket; text: string; 
           }
         }}
       />
-      <button type="button" className="bg-blue-400 rounded text-white p-2 w-[100px]" onClick={() => socketHandler()}>
+      <button type="button" className="bg-blue-400 rounded text-white p-2 w-[100px]" onClick={socketHandler}>
         전송
       </button>
     </div>
